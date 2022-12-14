@@ -18,13 +18,13 @@ void scan_file(FILE *file)
 	{
 		line_number++;
 		token = strtok(buffer, delimiter);
-		if (token == NULL || strncmp(token, "#", 1) == 0)
+		if (token == NULL)
 		{
 			free(token);
 			continue;
 		}
 		token1 = strtok(NULL, delimiter);
-		get_op_func(token, token1, &stack, line_number);
+		result = get_op_func(token, token1, &stack, line_number);
 		if (result == 1)
 		{
 			fprintf(stderr, "L%u: usage: push integer\n", line_number);
@@ -33,7 +33,7 @@ void scan_file(FILE *file)
 			free_dlist(stack);
 			exit(EXIT_FAILURE);
 		}
-		if (result == 2)
+		else if (result == 2)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, token);
 			fclose(file);
