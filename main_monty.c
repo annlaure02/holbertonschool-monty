@@ -31,5 +31,5 @@ int main(int argc, char *argv[])
 	}
 	scan_file(file);
 	fclose(file);
-	exit(EXIT_SUCCESS);
+	return (0);
 }

@@ -1,5 +1,6 @@
 #include "monty.h"
 
+int value;
 /**
  * _push - pushe an element to the stack
  * @stack: pointer to the head of the stack
@@ -11,28 +12,15 @@
 void _push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *new;
-	int i = 0;
-	int n;
-	char *token;
+	int n = value;
+	(void)line_number;
 
-	token = strtok(NULL, "\n\t\r ");
-
-	for (i = 0; token[i]; i++)
-	{
-		if (isdigit(token[i]) == 0)
-		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-			exit(EXIT_FAILURE);
-		}
-	}
 	new = malloc(sizeof(stack_t));
 	if (new == NULL)
 	{
-		free(new);
-		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	n = atoi(token);
+	printf("n = %i\n", n);
 	new->n = n;
 	new->next = *stack;
 	new->prev = NULL;

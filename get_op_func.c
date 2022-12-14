@@ -6,7 +6,7 @@
  * @line_number: TBD
  * Return: Nothing.
  */
-void get_op_func(char *op, stack_t **stack, unsigned int line_number)
+int get_op_func(char *op, char *data, stack_t **stack, unsigned int line_number)
 {
 	unsigned int i = 0;
 
@@ -21,15 +21,29 @@ void get_op_func(char *op, stack_t **stack, unsigned int line_number)
 		{NULL, NULL}
 	};
 
-	while (code_list[i].opcode != NULL)
+	while (code_list[i].opcode)
 	{
-		if (strcmp(code_list[i].opcode, op) == 0)
+		/*if (strcmp(code_list[i].opcode, op) == 0)
 		{
 			code_list[i].f(stack, line_number);
-			return;
+			break;
+		}*/
+		if (!strcmp(code_list[i].opcode, op))
+		{
+			if (!strcmp(op, "push"))
+			{
+				if (_isdigit(data) == 1)
+					value = atoi(data);
+				else
+					return (1);
+			}
+			code_list[i].f(stack, line_number);
+			break;
 		}
 		i++;
 	}
-	fprintf(stderr, "L%u: unknown instruction %s\n", line_number, op);
-	exit(EXIT_FAILURE);
+	if (!code_list[i].opcode)
+		return (2);
+
+	return (0);
 }
