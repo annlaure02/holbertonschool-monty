@@ -12,19 +12,36 @@ void scan_file(FILE *file)
 	unsigned int line_number = 0;
 	char *delimiter = "\n\t\r ";
 	stack_t *stack = NULL;
-	/*int result;*/
+	int result = 0;
 
 	while (getline(&buffer, &n, file) != -1)
 	{
 		line_number++;
 		token = strtok(buffer, delimiter);
 		if (token == NULL || strncmp(token, "#", 1) == 0)
+		{
+			free(token);
 			continue;
+		}
 		token1 = strtok(NULL, delimiter);
 		get_op_func(token, token1, &stack, line_number);
-		/*printf("token1 = %s\n", token1);*/
-		/*if (result == 1)
+		if (result == 1)
+		{
 			fprintf(stderr, "L%u: usage: push integer\n", line_number);
-				exit(EXIT_FAILURE);*/
+			fclose(file);
+			free(buffer);
+			free_dlist(stack);
+			exit(EXIT_FAILURE);
+		}
+		if (result == 2)
+		{
+			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			fclose(file);
+			free(buffer);
+			free_dlist(stack);
+			exit(EXIT_FAILURE);
+		}
 	}
+	free(buffer);
+	free_dlist(stack);
 }

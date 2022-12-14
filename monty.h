@@ -56,4 +56,6 @@ void _nop(stack_t **stack, unsigned int line_number);
 
 /*buid in functions*/
 int _isdigit(char *c);
+
+void free_dlist(stack_t *head);
 #endif

@@ -4,8 +4,8 @@
  * @op:	opcode
  * @data: data
  * @stack: pointer to the head of the stack
- * @line_number: number of line
- * Return: Nothing.
+ * @line_nb: number of line
+ * Return: 0 on success, 1 if there is no data, 2 if different of opcode.
  */
 int get_op_func(char *op, char *data, stack_t **stack, unsigned int line_nb)
 {
@@ -24,11 +24,6 @@ int get_op_func(char *op, char *data, stack_t **stack, unsigned int line_nb)
 
 	while (code_list[i].opcode)
 	{
-		/*if (strcmp(code_list[i].opcode, op) == 0)
-		{
-			code_list[i].f(stack, line_nb);
-			break;
-		}*/
 		if (!strcmp(code_list[i].opcode, op))
 		{
 			if (!strcmp(op, "push"))
