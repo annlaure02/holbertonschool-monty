@@ -26,7 +26,7 @@ int get_op_func(char *op, char *data, stack_t **stack, unsigned int line_nb)
 	{
 		/*if (strcmp(code_list[i].opcode, op) == 0)
 		{
-			code_list[i].f(stack, line_number);
+			code_list[i].f(stack, line_nb);
 			break;
 		}*/
 		if (!strcmp(code_list[i].opcode, op))
@@ -38,7 +38,7 @@ int get_op_func(char *op, char *data, stack_t **stack, unsigned int line_nb)
 				else
 					return (1);
 			}
-			code_list[i].f(stack, line_number);
+			code_list[i].f(stack, line_nb);
 			break;
 		}
 		i++;
