@@ -39,7 +39,9 @@ int get_op_func(char *op, char *data, stack_t **stack, unsigned int line_nb)
 		i++;
 	}
 	if (!code_list[i].opcode)
+	{
 		return (2);
+	}
 
 	return (0);
 }
