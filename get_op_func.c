@@ -1,12 +1,13 @@
 #include "monty.h"
 /**
  * get_op_func - get function.
- * @op:	TBD
- * @stack: TBD
- * @line_number: TBD
+ * @op:	opcode
+ * @data: data
+ * @stack: pointer to the head of the stack
+ * @line_number: number of line
  * Return: Nothing.
  */
-int get_op_func(char *op, char *data, stack_t **stack, unsigned int line_number)
+int get_op_func(char *op, char *data, stack_t **stack, unsigned int line_nb)
 {
 	unsigned int i = 0;
 

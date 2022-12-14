@@ -43,7 +43,7 @@ typedef struct instruction_s
 extern int value;
 
 void scan_file(FILE *file);
-int get_op_func(char *op, char *data, stack_t **stack, unsigned int line_number);
+int get_op_func(char *op, char *data, stack_t **stack, unsigned int line_nb);
 
 /*opcode functions*/
 void _push(stack_t **stack, unsigned int line_number);
