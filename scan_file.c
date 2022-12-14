@@ -35,7 +35,7 @@ void scan_file(FILE *file)
 		}
 		if (result == 2)
 		{
-			fprintf(stderr, "L%u: usage: push integer\n", line_number);
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, token);
 			fclose(file);
 			free(buffer);
 			free_dlist(stack);
